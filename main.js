@@ -58,18 +58,19 @@ Ball.prototype.update = function() {
 }
 
 var balls = [];
+
 function loop() {
   ctx.fillStyle = 'rgba(2, 6, 0, 0.95)';
   ctx.fillRect(0, 0, width, height);
 
-  while (balls.length < 1137) {
+  while (balls.length < 1234) {
     var ball = new Ball(
       random(20,width),
       random(20,height),
       random(1,1),
-      random(1,3),
-      'rgb(' + random(0,1500) + ',' + random(0,155) + ',' + random(0,155) +')',
-      random(5,10)
+      random(-9,9),
+      'rgb(' + random(180, 280) + ',' + random(180,15) + ',' + random(200,255) +')',
+      random(0,200)
     );
     balls.push(ball);
   }
@@ -77,12 +78,11 @@ function loop() {
   for (var i = 0; i < balls.length; i++) {
     balls[i].draw();
     balls[i].update();
+    balls[i].collisionDetect();
   }
 
   requestAnimationFrame(loop);
 }
-loop();
-
 Ball.prototype.collisionDetect = function() {
   for (var j = 0; j < balls.length; j++) {
     if (!(this === balls[j])) {
@@ -97,4 +97,7 @@ Ball.prototype.collisionDetect = function() {
   }
 }
 
-balls[i].collisionDetect();
+loop();
+
+
+
