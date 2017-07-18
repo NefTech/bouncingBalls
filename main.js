@@ -66,7 +66,7 @@ function loop() {
   while (balls.length < 1234) {
     var ball = new Ball(
       random(20,width),
-      random(20,height),
+      random(20,height),	
       random(1,1),
       random(-9,9),
       'rgb(' + random(180, 280) + ',' + random(180,15) + ',' + random(200,255) +')',
